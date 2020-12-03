@@ -17,14 +17,14 @@ async function getById(id) {
   return data;
 }
 
-async function post(owner) {
-  const { data } = await http.post(endPoint, owner, { headers: auth });
+async function post(vesicle) {
+  const { data } = await http.post(endPoint, vesicle, { headers: auth });
 
   return data;
 }
 
-async function put(id, owner) {
-  const { data } = await http.put(endPoint + "/" + id, owner, {
+async function put(id, vesicle) {
+  const { data } = await http.put(endPoint + "/" + id, vesicle, {
     headers: auth,
   });
 
