@@ -1,0 +1,10 @@
+{
+    "ownersEndPoint":"https://localhost:5001/api/owners",
+    "vesiclesEndPoint":"https://localhost:5001/api/vesicles",
+    "usersEndPoint":"https://localhost:5001/api/users",
+    "taxesEndPoint":"https://localhost:5001/api/taxes",
+    "ticketsEnPoint":"https://localhost:5001/api/tickets",
+    "visasEnPoint":"https://localhost:5001/api/visas",
+     "tokenEndPoint":"https://localhost:5001/api/token",
+     "invoicesEndPoint":"https://localhost:5001/api/invoices"
+}

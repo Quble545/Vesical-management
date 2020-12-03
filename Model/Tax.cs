@@ -15,6 +15,6 @@ namespace VesicleManagementSystem.Model
         public Vesicle Vesicle { get; set; }
         [Required]
         public int VesicleId { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
     }
 }

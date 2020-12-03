@@ -48,6 +48,7 @@ namespace VesicleManagementSystem.Controllers
             var user = await _context.Users.SingleOrDefaultAsync(u => u.Username == username);
             var claims = new List<Claim>
             {
+                new Claim("name", user.Name),
                 new Claim("username", username),
                 new Claim("id", user.Id.ToString()),
                 new Claim(JwtRegisteredClaimNames.Nbf, new DateTimeOffset(DateTime.Now).ToUnixTimeSeconds().ToString()),

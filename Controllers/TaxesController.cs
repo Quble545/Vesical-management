@@ -35,6 +35,7 @@ namespace VesicleManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                tax.Date = DateTime.Now;
                 await _context.Taxes.AddAsync(tax);
                 await _context.SaveChangesAsync();
 

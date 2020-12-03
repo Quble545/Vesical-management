@@ -35,8 +35,11 @@ namespace VesicleManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
+                vesicle.Date = DateTime.Now;
                 await _context.Vesicles.AddAsync(vesicle);
                 await _context.SaveChangesAsync();
+                vesicle.Owner = await _context.Owners.FirstAsync(o => o.Id == vesicle.OwnerId);
+
 
                 return Ok(vesicle);
             }
@@ -49,7 +52,7 @@ namespace VesicleManagementSystem.Controllers
         {
             if (ModelState.IsValid)
             {
-                var vesicleDb = _context.Vesicles.Find(Id);
+                var vesicleDb = await _context.Vesicles.FirstAsync(v => v.Id == Id);
 
                 if (vesicleDb != null)
                 {
@@ -58,6 +61,7 @@ namespace VesicleManagementSystem.Controllers
                     vesicleDb.Hp = vesicle.Hp;
                     vesicleDb.Type = vesicle.Type;
                     vesicleDb.Date = DateTime.Now;
+                    vesicleDb.Owner = await _context.Owners.FirstAsync(o => o.Id == vesicle.OwnerId);
 
                     await _context.SaveChangesAsync();
                 }

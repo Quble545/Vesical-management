@@ -15,6 +15,6 @@ namespace VesicleManagementSystem.Model
         public Owner Owner { get; set; }
         [Required]
         public int OwnerId { get; set; }
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
     }
 }
