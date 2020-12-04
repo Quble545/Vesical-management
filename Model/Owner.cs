@@ -1,5 +1,4 @@
 using System.ComponentModel.DataAnnotations;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace VesicleManagementSystem.Model
 {
@@ -10,7 +9,6 @@ namespace VesicleManagementSystem.Model
         public string Name { get; set; }
         [Required]
         public string Phone { get; set; }
-        // [Required]
-        // public byte[] Image { get; set; }
+       
     }
 }

@@ -58,7 +58,7 @@ const items = [
         id: "Tax",
         title: "Tax",
         type: "item",
-        url: "/taxForm/new",
+        url: "/service/taxForm/new",
         icon: "feather icon-file-text",
       },
     ],
@@ -76,16 +76,10 @@ const items = [
         icon: "feather icon-pie-chart",
         children: [
           {
-            id: "Tickets",
-            title: "Tickets",
+            id: "Taxes",
+            title: "Taxes",
             type: "item",
-            url: "/reports/Tickets",
-          },
-          {
-            id: "Visas",
-            title: "Visas",
-            type: "item",
-            url: "/reports/Visas",
+            url: "/reports/taxes",
           },
         ],
       },

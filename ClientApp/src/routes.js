@@ -5,24 +5,27 @@ window.jQuery = $;
 window.$ = $;
 global.jQuery = $;
 
+const Home = React.lazy(() => import("./Components/Home/Home"));
+
 const Owners = React.lazy(() => import("./Components/Registration/owners"));
 const Vesicles = React.lazy(() => import("./Components/Registration/Vesicles"));
 
 const Users = React.lazy(() => import("./Components/Registration/users"));
 
 const TaxForm = React.lazy(() => import("./Components/Taxes/TaxForm"));
-const Tickets = React.lazy(() => import("./Components/ticket/tickets"));
-
-const visaForm = React.lazy(() => import("./Components/visa/visaForm"));
-const visas = React.lazy(() => import("./Components/visa/visas"));
-
-const Invoices = React.lazy(() => import("./Components/Invoices/Invoices"));
+const Taxes = React.lazy(() => import("./Components/Taxes/Taxes"));
 
 const userProfile = React.lazy(() =>
   import("./Components/UserProfile/Profile")
 );
 
 const routes = [
+  {
+    path: "/",
+    exact: true,
+    name: "Home",
+    component: Home,
+  },
   {
     path: "/list/owners",
     exact: true,
@@ -42,40 +45,22 @@ const routes = [
     component: Users,
   },
   {
-    path: "/taxForm/:id",
+    path: "/service/taxForm/:id",
     exact: true,
-    name: "Tax form",
+    name: "Tax",
     component: TaxForm,
   },
   {
-    path: "/reports/tickets",
+    path: "/reports/taxes",
     exact: true,
-    name: "Tickets",
-    component: Tickets,
+    name: "Taxes",
+    component: Taxes,
   },
   {
-    path: "/visaForm/:id",
-    exact: true,
-    name: "Visa form",
-    component: visaForm,
-  },
-  {
-    path: "/reports/visas",
-    exact: true,
-    name: "Visas",
-    component: visas,
-  },
-  {
-    path: "/user/profile",
+    path: "/user/profile/:id",
     exact: true,
     name: "Profile",
     component: userProfile,
-  },
-  {
-    path: "/transactions/invoices",
-    exact: true,
-    name: "Invoices",
-    component: Invoices,
   },
 ];
 

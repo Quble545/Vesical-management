@@ -21,7 +21,7 @@ namespace VesicleManagementSystem.Controllers
         [HttpGet]
         public async Task<ActionResult> getAll()
         {
-            return Ok(await _context.Taxes.Include(t => t.Vesicle).ToListAsync());
+            return Ok(await _context.Taxes.Include(t => t.Vesicle).Include(t => t.Vesicle.Owner).ToListAsync());
         }
 
         [HttpGet("{id}")]

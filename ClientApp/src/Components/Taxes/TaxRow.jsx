@@ -10,6 +10,7 @@ import TableRow from "@material-ui/core/TableRow";
 import Typography from "@material-ui/core/Typography";
 import KeyboardArrowDownIcon from "@material-ui/icons/KeyboardArrowDown";
 import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
+import { NavLink } from "react-router-dom";
 
 class Row extends Component {
   render() {
@@ -17,7 +18,7 @@ class Row extends Component {
 
     return (
       <React.Fragment>
-        <TableRow key={row.id}>
+        <TableRow key={row}>
           <TableCell>
             <IconButton
               aria-label="expand row"
@@ -27,27 +28,18 @@ class Row extends Component {
               {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
             </IconButton>
           </TableCell>
-          <TableCell align="left">{row.customer}</TableCell>
-          <TableCell align="left">{row.supplier}</TableCell>
-          <TableCell align="left">{row.ticketType}</TableCell>
-          <TableCell align="left">{row.paymentMethod}</TableCell>
-          <TableCell align="left">{row.from}</TableCell>
-          <TableCell align="left">{row.to}</TableCell>
-          <TableCell align="left">{row.price}</TableCell>
-          <TableCell align="left">{row.commission}</TableCell>
-          <TableCell align="left">{row.date}</TableCell>
-          {user.role == "Admin" ? (
-            <TableCell align="left">
-              <a onClick={() => onRedirect(row.id)}>
-                <i
-                  className="feather icon-edit"
-                  style={{ fontSize: 20, color: "blue" }}
-                />
-              </a>
-            </TableCell>
-          ) : (
-            ""
-          )}
+          <TableCell align="left">${row.amount}</TableCell>
+          <TableCell align="left">{row.area}</TableCell>
+          <TableCell align="left">{row.bookNo}</TableCell>
+          <TableCell align="left">{this.handleDate(row.date)}</TableCell>
+          <TableCell align="left">
+            <NavLink to={"/service/taxForm/" + row.id}>
+              <i
+                className="feather icon-edit"
+                style={{ fontSize: 20, color: "blue" }}
+              />
+            </NavLink>
+          </TableCell>
         </TableRow>
         <TableRow key={"as"}>
           <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
@@ -58,42 +50,42 @@ class Row extends Component {
             >
               <Box margin={1}>
                 <Typography variant="h6" gutterBottom component="div">
-                  Passengers
+                  Vesicle
                 </Typography>
                 <Table>
                   <TableHead>
                     <TableRow key={"a"}>
                       <TableCell>
-                        <div style={{ fontWeight: "bold" }}>Passenger</div>
+                        <div style={{ fontWeight: "bold" }}>Owner</div>
                       </TableCell>
                       <TableCell>
-                        <div style={{ fontWeight: "bold" }}>
-                          Reservation No{" "}
-                        </div>
+                        <div style={{ fontWeight: "bold" }}>Plate No.</div>
                       </TableCell>
                       <TableCell>
-                        <div style={{ fontWeight: "bold" }}>
-                          Departure date{" "}
-                        </div>
+                        <div style={{ fontWeight: "bold" }}>Type</div>
                       </TableCell>
                       <TableCell>
-                        <div style={{ fontWeight: "bold" }}> Return date </div>
+                        <div style={{ fontWeight: "bold" }}>Hp</div>
+                      </TableCell>
+                      <TableCell>
+                        <div style={{ fontWeight: "bold" }}> date </div>
                       </TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {row.passengers.map((passenger) => (
-                      <TableRow key={passenger.id}>
-                        <TableCell component="th" scope="row">
-                          {passenger.name}
-                        </TableCell>
-                        <TableCell>{passenger.reservation}</TableCell>
-                        <TableCell align="left">
-                          {passenger.departure}
-                        </TableCell>
-                        <TableCell align="left">{passenger.return}</TableCell>
-                      </TableRow>
-                    ))}
+                    <TableRow key={row.vesicle.id}>
+                      <TableCell component="th" scope="row">
+                        {row.vesicle.owner.name}
+                      </TableCell>
+                      <TableCell component="th" scope="row">
+                        {row.vesicle.plateNo}
+                      </TableCell>
+                      <TableCell>{row.vesicle.type}</TableCell>
+                      <TableCell align="left">{row.vesicle.hp}</TableCell>
+                      <TableCell align="left">
+                        {this.handleDate(row.vesicle.date)}
+                      </TableCell>
+                    </TableRow>
                   </TableBody>
                 </Table>
               </Box>

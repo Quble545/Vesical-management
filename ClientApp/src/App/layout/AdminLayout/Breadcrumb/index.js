@@ -89,7 +89,7 @@ class Breadcrumb extends Component {
       }
     }
 
-    document.title = title + " | Travel agency";
+    document.title = title + " | Vesicle management";
 
     return <Aux>{breadcrumb}</Aux>;
   }

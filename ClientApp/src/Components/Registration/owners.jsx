@@ -10,13 +10,14 @@ import Paginate from "../../Utility/pagination";
 import Searching from "../../Utility/ownerFilter";
 import _ from "lodash";
 import Theader from "../Common/Theader";
+import { NavLink } from "react-router-dom";
 
 class Owners extends Component {
   state = {
     showModal: false,
     showBootBox: false,
     owners: [],
-    owner: { id: 0, name: "", phone: "" },
+    owner: { id: 0, name: "", phone: "", image: "" },
     errors: {},
     deletedOwner: {},
     pageSize: 10,
@@ -33,6 +34,7 @@ class Owners extends Component {
     id: joi.number().allow(0),
     name: joi.string().min(3).required().label("Name"),
     phone: joi.string().required().label("Phone Number"),
+    image: joi.any(),
   };
 
   render() {
@@ -102,7 +104,9 @@ class Owners extends Component {
               <tbody>
                 {owners.map((c) => (
                   <tr key={c.id}>
-                    <td>{c.name}</td>
+                    <td>
+                      <NavLink to={"/user/profile/" + c.id}>{c.name}</NavLink>
+                    </td>
                     <td>{c.phone}</td>
                     <td>
                       <a onClick={() => this.showModal(c.id)}>

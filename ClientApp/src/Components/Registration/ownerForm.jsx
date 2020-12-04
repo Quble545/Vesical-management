@@ -45,6 +45,19 @@ class CustomerForm extends Component {
               errors={errors}
               required={true}
             />
+
+            {/* <div className="form-group">
+              <label htmlFor="">
+                Photo <span className="text-danger"> *</span>
+              </label>
+              <input
+                name="image"
+                value={owner.image}
+                onChange={onChange}
+                type="file"
+                className="form-control"
+              />
+            </div> */}
           </Modal.Body>
           <Modal.Footer>
             <Button

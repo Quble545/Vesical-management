@@ -1,3 +1,4 @@
+using System.IO;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -12,6 +13,7 @@ namespace VesicleManagementSystem.Controllers
     public class OwnersController : Controller
     {
         public VesicleDbContext _context { get; set; }
+
         public OwnersController(VesicleDbContext context)
         {
             _context = context;
@@ -26,12 +28,15 @@ namespace VesicleManagementSystem.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult> getById(int Id)
         {
-            return Ok(await _context.Owners.SingleOrDefaultAsync(o => o.Id == Id));
+            return Ok(await _context
+                .Owners
+                .SingleOrDefaultAsync(o => o.Id == Id));
         }
 
         [HttpPost]
         public async Task<ActionResult> post([FromBody] Owner owner)
         {
+            
             if (ModelState.IsValid)
             {
                 await _context.Owners.AddAsync(owner);
@@ -52,7 +57,6 @@ namespace VesicleManagementSystem.Controllers
 
                 if (ownerDb != null)
                 {
-                    // ownerDb.Image = owner.Image;
                     ownerDb.Name = owner.Name;
                     ownerDb.Phone = owner.Phone;
 
@@ -70,7 +74,7 @@ namespace VesicleManagementSystem.Controllers
         {
             var owner = _context.Owners.Find(Id);
 
-            _context.Remove(owner);
+            _context.Remove (owner);
             _context.SaveChangesAsync();
         }
     }

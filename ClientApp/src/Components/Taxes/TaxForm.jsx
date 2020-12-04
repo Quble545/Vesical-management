@@ -225,6 +225,8 @@ class TaxForm extends Component {
       } else {
         await Services.put(tax.id, tax);
         toast.success("Successfuly updated.");
+
+        this.props.history.push("/reports/taxes");
       }
     } catch (errors) {
       toast.error("Something went wrong");
@@ -267,7 +269,8 @@ class TaxForm extends Component {
 
     if (id !== "new") {
       tax = await Services.getById(id);
-      tax.date = this.dateNow(tax.date);
+      delete tax.date;
+      delete tax.vesicle;
     }
 
     this.setState({ vesicles, tax, owners });
